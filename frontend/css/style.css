@@ -1,8 +1,7 @@
 header {
-    width: 300px;
     background: aliceblue;
     border: 5px solid black;
-    margin: 3px;
+    text-align: center;
     padding: 5px;
 }
 
@@ -13,4 +12,12 @@ h1 {
 
 body {
     background-color: white;
+    margin: 0;
+}
+
+main {
+    width: 500px;
+    border: 5px solid red;
+    margin: 100px auto;
+    padding: 25px;
 }
