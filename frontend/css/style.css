@@ -1,3 +1,19 @@
+.bank-title {
+    width: 100%;
+    margin: 0 auto;
+    height: 100em;
+
+}
+
+.login {
+    width: 100%;
+    margin: 0 auto;
+}
+
+body {
+    display: flex;
+}
+
 header {
     background: aliceblue;
     border: 5px solid black;
@@ -18,6 +34,5 @@ body {
 main {
     width: 500px;
     border: 5px solid red;
-    margin: 100px auto;
     padding: 25px;
 }
