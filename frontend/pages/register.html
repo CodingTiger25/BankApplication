@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function getUserName(){
+            let user = document.getElementById("nameField").value;
+            let pass = document.getElementById("passField").value;
+            alert("User name: " + user + " password: " + pass);
+        }
+
+    </script>
+    <main>
+        <h1>
+            Register page
+        </h1>
+
+        <form>
+            <div>
+                <label id="username" for="nameField" >Username</label>
+                <input id ="nameField" type="text"/>
+
+                <label id="password" for="passField" >Password</label>
+                <input id ="passField" type="text"/>
+            </div>
+
+            <button id="sub" type="button" onclick="getUserName()">Print username</button>
+        </form>
+        <button onclick='window.location.replace("../index.html")'>
+            Home
+        </button>
+
+    </main>
+
+</body>
+</html>
