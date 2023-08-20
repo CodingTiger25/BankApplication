@@ -9,7 +9,30 @@
         function getUserName(){
             let user = document.getElementById("nameField").value;
             let pass = document.getElementById("passField").value;
-            alert("User name: " + user + " password: " + pass);
+
+            fetch('http://localhost:8080/register', {
+                method: 'POST',
+                headers: {
+                    accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Credentials': true
+                },
+
+                redirect:"follow",
+
+                referrerPolicy:"no-referrer",
+
+                body: JSON.stringify({
+                    "user_name": user,
+                    "password": pass,
+                    "checking_amount": 0,
+                    "saving_amount": 0
+                })
+            })
+                .then(res => res.json())
+                .then(data => console.log(data))
+                .then(res => console.log(res))
         }
     </script>
     <main>
@@ -26,7 +49,7 @@
                 <input id ="passField" type="text"/>
             </div>
 
-            <button id="sub" type="button" onclick="getUserName()">Print username</button>
+            <button id="sub" type="button" onclick="getUserName()">Submit</button>
         </form>
         <button onclick='window.location.replace("../index.html")'>
             Home

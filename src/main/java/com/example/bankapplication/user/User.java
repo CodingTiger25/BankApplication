@@ -11,18 +11,20 @@ import java.util.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id", nullable = false, columnDefinition = "serial")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter @Setter
     private Long id;
 
     @Getter @Setter
-    String userName;
+    String user_name;
 
     @Getter @Setter
     String password;
 
     @Setter @Getter
-    int checkingAmount;
+    int checking_amount;
 
     @Setter @Getter
-    int savingAmount;
+    int saving_amount;
 }

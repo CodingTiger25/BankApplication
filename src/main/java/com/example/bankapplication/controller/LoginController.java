@@ -25,7 +25,7 @@ public class LoginController {
         this.userRepository = userRepository;
     }
 
-    @CrossOrigin(origins = "http://localhost:8080/")
+    //@CrossOrigin(origins = "http://localhost:8080/")
     @GetMapping("/login")
     public User getUser(@RequestParam Integer id)
     {
