@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Main Page</title>
@@ -7,40 +7,69 @@
 </head>
 
     <body>
+    <script>
+        function getUserName(){
+            let user = document.getElementById("nameField").value;
+            let pass = document.getElementById("passField").value;
+
+            fetch('http://localhost:8080/login', {
+                method: 'POST',
+                headers: {
+                    accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Credentials': true
+                },
+
+                redirect:"follow",
+
+                referrerPolicy:"no-referrer",
+
+                body: JSON.stringify({
+                    "user_name": user,
+                    "password": pass,
+                })
+            })
+                .then(res => res.json())
+                //.then(res => console.log(res))
+
+            window.location.assign = "pages/home-page.html";
+        }
+    </script>
+
+    <script type="text/javascript">
+        function registration(){
+
+
+            window.location.replace("pages/register.html");
+        }
+
+    </script>
     <header class="bank-title">
         <h1>
             Bank Login Page
         </h1>
     </header>
     <main class="login">
-        <form action="pages/home-page.html">
+        <form  method="post">
             <div >
-                <strong>
-                    Username
-                </strong>
-                <input type="text"/>
-            </div>
+                <label id="username" for="nameField">Username: </label>
+                <input id = "nameField" type="text"/>
 
-            <br>
 
-            <div>
-                <strong>
-                    Password
-                </strong>
-                <input type="text"/>
+                <label id="password" for="passField">Password: </label>
+                <input id = "passField" type="text"/>
             </div>
 
             <div>
-                <button type="submit">
+                <button type="submit" onclick=" return getUserName()">
                     Login
                 </button>
             </div>
         </form>
 
         <div>
-            <button type="button" onclick= 'window.location.replace("pages/register.html")'>
-                Register
-            </button>
+             <button id="registerPage" onclick="registration()"> Register</button>
         </div>
     </main>
 
