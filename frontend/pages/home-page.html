@@ -7,11 +7,14 @@
 </head>
 <script>
 
-    let userName = "";
+    let user;
+    let user_checking;
+    let user_saving;
+
     function main(){
         let token = 'Bearer ' + sessionStorage.getItem('token');
         //sessionStorage.clear();
-        console.log("TOKEN: " + token)
+        //console.log("TOKEN: " + token)
         //console.log("Token: " + token)
 
         fetch('http://localhost:8080/user/', {
@@ -25,20 +28,26 @@
                 'Access-Control-Allow-Credentials': true
             },
 
-            }).then(res => res.text())
+            }).then(res => res.json())
             .then(data => {
-                userName = data
+                user = data.username;
+                user_checking = data.checking_amount;
+                user_saving = data.saving_amount;
             })
-            .then(() => localStorage.setItem('user', userName))
+            .then(() => document.getElementById("User_name").innerHTML = user,
+            )
+            .then(() => document.getElementById("checking").innerHTML = user_checking,
+                )
+            .then(() => document.getElementById("saving").innerHTML = user_saving)
     }
-</script>
-<script>
-    function userInfo(name)
-    {
-        return name;
-    }
-</script>
 
+    function userInfo()
+    {
+        document.getElementById("User_name").innerHTML = user;
+    }
+
+
+</script>
 <script>
     function home(){
         window.location.replace("../index.html");
@@ -54,11 +63,23 @@
 
 
         <div>
-            <p id="name">
+            <p id="User_name">
+
+            </p>
+        </div>
+
+        <div>
+            <p id="checking">
 
             </p>
 
-            <script>document.getElementById("name").innerHTML = localStorage.getItem('user')</script>
+        </div>
+
+        <div>
+            <p id="saving">
+
+            </p>
+
         </div>
 
 

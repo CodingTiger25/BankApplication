@@ -19,6 +19,11 @@ public class LoginResponse {
         this.jwt = jwt;
     }
 
+    public LoginResponse(User user){
+
+        this.user = user;
+    }
+
     /*public LoginResponse(User user, String jwt){
 
         this.user = user;
