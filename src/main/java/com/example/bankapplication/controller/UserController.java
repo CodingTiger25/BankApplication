@@ -5,13 +5,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
+
 @RestController
 @RequestMapping("/user")
 @CrossOrigin("*")
 public class UserController {
 
     @GetMapping("/")
-    public String helloUserController(){
-        return " User access level";
+    public String helloUserController(Principal principal){
+        return principal.getName();
     }
 }

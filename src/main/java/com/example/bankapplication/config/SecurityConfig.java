@@ -64,10 +64,11 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST,"/register").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(HttpMethod.POST,"/token").permitAll()
-                        .requestMatchers(HttpMethod.GET,"/user/").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/user/**").permitAll()
                         .anyRequest().authenticated()
                 )
-                .oauth2ResourceServer((oauth2) -> oauth2.jwt( jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())))
+                .oauth2ResourceServer((oauth2) -> oauth2.jwt( jwt -> jwt.
+                        jwtAuthenticationConverter(jwtAuthenticationConverter())))
 
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();

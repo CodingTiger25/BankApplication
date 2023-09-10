@@ -12,6 +12,8 @@
             let user = document.getElementById("nameField").value;
             let pass = document.getElementById("passField").value;
 
+            var obj;
+
             fetch('http://localhost:8080/login', {
                 method: 'POST',
                 headers: {
@@ -26,14 +28,35 @@
                 referrerPolicy:"no-referrer",
 
                 body: JSON.stringify({
-                    "user_name": user,
+                    "userName": user,
                     "password": pass,
                 })
             })
-                .then(res => res.json())
+
+                .then(res => res.text())
+                .then(data => {
+                    obj = data;
+                    console.log(obj);
+                })
+                .then(() => {
+                    sessionStorage.setItem('token', obj);
+                    window.location.replace("pages/home-page.html");
+                });
+
+
+                /*.then(res => {
+                    console.log(res);
+                    localStorage.setItem('Bearer', res.text();
+                    let token = localStorage.getItem('Bearer');
+                    console.log(token)
+                })
+                /*.then(res => console.log('RES: ' + res.data()))
+
+                let data = localStorage.getItem('Bearer');
+                console.log('THIS IS BASE: ' + data);
                 //.then(res => console.log(res))
 
-            window.location.assign = "pages/home-page.html";
+           // window.location.replace("pages/home-page.html") ;*/
         }
     </script>
 
@@ -62,7 +85,7 @@
             </div>
 
             <div>
-                <button type="submit" onclick=" return getUserName()">
+                <button type="button" onclick=" return getUserName()">
                     Login
                 </button>
             </div>

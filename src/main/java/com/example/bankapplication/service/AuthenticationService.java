@@ -54,26 +54,20 @@ public class AuthenticationService {
     }
 
 
-    public LoginResponse loginUser(String userName, String password)
+    public String loginUser(String userName, String password)
     {
         try{ //1:30:00
-
-
-            logger.info(userName);
-            logger.info(password);
 
             Authentication auth = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(userName, password)
             );
-
-            logger.info(String.valueOf(auth));
-
             String token = tokenService.generateJwt(auth);
-
-            return new LoginResponse(userRepository.findByUserName(userName).get(), token);
+            //return new LoginResponse(userRepository.findByUserName(userName).get(), token);
+           // return new LoginResponse(token);
+            return token;
         }catch(AuthenticationException e){
-            logger.info(String.valueOf(e));
-            return new LoginResponse(null, "");
+            //return new LoginResponse("");
+            return "";
         }
     }
 

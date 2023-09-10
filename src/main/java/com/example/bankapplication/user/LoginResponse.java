@@ -15,12 +15,15 @@ public class LoginResponse {
         super();
     }
 
-    public LoginResponse(User user, String jwt){
-
-        this.user = user;
+    public LoginResponse(String jwt){
         this.jwt = jwt;
     }
 
+    /*public LoginResponse(User user, String jwt){
+
+        this.user = user;
+        this.jwt = jwt;
+    }*/
 
 
 }

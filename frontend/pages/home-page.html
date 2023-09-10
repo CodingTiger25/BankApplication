@@ -5,11 +5,64 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<script>
+
+    let userName = "";
+    function main(){
+        let token = 'Bearer ' + sessionStorage.getItem('token');
+        //sessionStorage.clear();
+        console.log("TOKEN: " + token)
+        //console.log("Token: " + token)
+
+        fetch('http://localhost:8080/user/', {
+            method: 'GET',
+            withCredentials: true,
+            headers: {
+                accept: 'application/json',
+                Authorization: token,
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': true
+            },
+
+            }).then(res => res.text())
+            .then(data => {
+                userName = data
+            })
+            .then(() => localStorage.setItem('user', userName))
+    }
+</script>
+<script>
+    function userInfo(name)
+    {
+        return name;
+    }
+</script>
+
+<script>
+    function home(){
+        window.location.replace("../index.html");
+    }
+</script>
+
 <body>
     <header>
         <h1>
             Bank Application
         </h1>
+        <script>main()</script>
+
+
+        <div>
+            <p id="name">
+
+            </p>
+
+            <script>document.getElementById("name").innerHTML = localStorage.getItem('user')</script>
+        </div>
+
+
+        <button onclick="home()">Home</button>
     </header>
 </body>
 </html>

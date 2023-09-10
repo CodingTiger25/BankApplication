@@ -48,7 +48,7 @@ public class LoginController {
     }*/
 
     @PostMapping("/login")
-    public LoginResponse loginProcess(@RequestBody RegistrationDTO body)
+    public /*LoginResponse*/ String loginProcess(@RequestBody RegistrationDTO body)
     {
        /* System.out.println("BODY:  in login Response: " + user);
         System.out.println("UserName in login Response: " + user.getUserName());
