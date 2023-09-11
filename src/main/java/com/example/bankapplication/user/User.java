@@ -48,6 +48,8 @@ public class User implements UserDetails {
         authorities = new HashSet<>();
     }
 
+
+
     public User(Long id, String userName, String password, Set<Role> authorities){
         super();
         this.id = id;
@@ -56,7 +58,7 @@ public class User implements UserDetails {
         this.authorities = authorities;
     }
 
-    public User(Long id, String userName, String password, Integer checking_amount, Integer saving_amount, Set<Role> authorities){
+    public User(Long id, String userName, String password, int checking_amount, int saving_amount, Set<Role> authorities){
         super();
         this.id = id;
         this.userName = userName;

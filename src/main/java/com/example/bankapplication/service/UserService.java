@@ -46,6 +46,15 @@ public class UserService implements UserDetailsService {
         /*return (UserDetails) userRepository.findByUserName(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));*/
     }
+
+    public void changeChecking(String name, int amount)
+    {
+        User user = userRepository.findUserByUserName(name);
+
+        user.setChecking_amount(amount);
+
+        userRepository.save(user);
+    }
 }
 
 

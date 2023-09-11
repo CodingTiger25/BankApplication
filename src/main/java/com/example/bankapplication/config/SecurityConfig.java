@@ -65,6 +65,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(HttpMethod.POST,"/token").permitAll()
                         .requestMatchers(HttpMethod.GET,"/user/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT,"/user/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer((oauth2) -> oauth2.jwt( jwt -> jwt.
