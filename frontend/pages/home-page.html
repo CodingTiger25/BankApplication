@@ -41,9 +41,35 @@
             .then(() => document.getElementById("saving").innerHTML = user_saving)
     }
 
-    function userInfo()
+    function addCheckingCurrency()
     {
-        document.getElementById("User_name").innerHTML = user;
+        let x;
+        let currencyAmount = prompt("Enter currency amount: ");
+
+        if(currencyAmount != null)
+        {
+            fetch('http://localhost:8080/user/checking', {
+
+                method: 'PUT',
+                withCredentials: true,
+                headers: {
+                    accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Credentials': true
+                },
+                body: JSON.stringify({
+                    "userName": user,
+                    "checking_amount": parseInt(currencyAmount)
+                })
+
+            }).then(alert('Added ' + currencyAmount + ' to checking.'))
+
+
+
+
+
+        }
     }
 
 
@@ -83,6 +109,10 @@
         </div>
 
 
+        <div>
+            <button onclick="addCheckingCurrency()">Add to checking</button>
+            <button>Transfer</button>
+        </div>
         <button onclick="home()">Home</button>
     </header>
 </body>

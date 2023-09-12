@@ -51,7 +51,7 @@ public class UserService implements UserDetailsService {
     {
         User user = userRepository.findUserByUserName(name);
 
-        user.setChecking_amount(amount);
+        user.setChecking_amount(user.getChecking_amount() +  amount);
 
         userRepository.save(user);
     }
